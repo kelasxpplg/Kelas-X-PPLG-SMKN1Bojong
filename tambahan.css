@@ -101,10 +101,9 @@
 }
 
 /* Halaman profil */
-.profile-wrap {
-  max-width: 640px;
-  margin: 0 auto;
+.profile-hero {
   text-align: center;
+  padding-bottom: 8px;
 }
 .profile-photo {
   width: 160px;
@@ -127,17 +126,18 @@
 }
 .profile-name {
   font-family: 'Caveat', cursive;
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   margin: 0 0 4px;
 }
 .profile-role {
   font-family: 'IBM Plex Mono', monospace;
   opacity: .75;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .profile-bio {
+  max-width: 640px;
+  margin: 0 auto 24px;
   line-height: 1.7;
-  margin-bottom: 24px;
 }
 .profile-links {
   display: flex;
@@ -145,3 +145,85 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* Skill badges */
+.skill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.skill-badge {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #f4c43022;
+  border: 1px solid #f4c43066;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .85rem;
+}
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+.project-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff10;
+  border: 1px solid #ffffff1a;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.project-thumb {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Caveat', cursive;
+  font-size: 1.6rem;
+  color: #fff;
+}
+.project-body {
+  padding: 16px 18px 20px;
+}
+.project-body h4 {
+  margin: 0 0 6px;
+}
+.project-body p {
+  font-size: .9rem;
+  opacity: .85;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.project-tags span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .72rem;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #ffffff14;
+}
+.project-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .85rem;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+.project-link:hover { opacity: .7; }
