@@ -1,0 +1,147 @@
+/* ===== TAMBAHAN: Lightbox Galeri & Halaman Profil ===== */
+
+/* Membuat foto galeri terlihat bisa ditekan */
+.photo-tile img {
+  cursor: zoom-in;
+  transition: transform .25s ease, filter .25s ease;
+}
+.photo-tile:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+}
+
+/* Lightbox overlay */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 15, 10, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 24px;
+  animation: lightbox-fade .2s ease;
+}
+.lightbox-overlay.active {
+  display: flex;
+}
+@keyframes lightbox-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 8px;
+  box-shadow: 0 10px 50px rgba(0,0,0,.6);
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  color: #f4e9d8;
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+.lightbox-close:hover { color: #e8a33d; }
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,.12);
+  color: #f4e9d8;
+  border: none;
+  font-size: 1.8rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.lightbox-nav:hover { background: rgba(255,255,255,.25); }
+.lightbox-prev { left: 18px; }
+.lightbox-next { right: 18px; }
+.lightbox-caption {
+  position: absolute;
+  bottom: 22px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #f4e9d8cc;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .85rem;
+}
+
+/* Tombol profil pencipta */
+.creator-btn-wrap {
+  text-align: center;
+  margin-top: 18px;
+}
+.btn-creator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid #f4c43066;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: .85rem;
+  transition: background .2s ease, border-color .2s ease;
+}
+.btn-creator:hover {
+  background: #f4c43022;
+  border-color: #f4c430;
+}
+
+/* Halaman profil */
+.profile-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg,#e8a33d,#c0392b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Caveat', cursive;
+  font-size: 3rem;
+  color: #fff;
+  overflow: hidden;
+}
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-name {
+  font-family: 'Caveat', cursive;
+  font-size: 2.6rem;
+  margin: 0 0 4px;
+}
+.profile-role {
+  font-family: 'IBM Plex Mono', monospace;
+  opacity: .75;
+  margin-bottom: 20px;
+}
+.profile-bio {
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.profile-links {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
