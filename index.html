@@ -10,6 +10,10 @@
 <link rel="stylesheet" href="styler.css">
 <link rel="stylesheet" href="tambahan.css">
 <link rel="icon" type="image/png" sizes="1103x1103" href="logosmk.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-title" content="Kelas X PPLG">
+<meta name="theme-color" content="#2563eb">
 <style>
   .id-photo { cursor: pointer; transition: transform 0.15s ease; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
   .id-photo:hover { transform: scale(1.05); }
@@ -99,6 +103,7 @@
       <a href="#pengurus">Pengurus</a>
       <a href="daftar-siswa.html">Daftar Siswa</a>
       <a href="galeri.html">Galeri</a>
+      <a href="tugas.html">Tugas</a>
       <a href="#pengumuman">Pengumuman</a>
       <a href="#kontak">Kontak</a>
       <a href="profil.html">Profil</a>
@@ -354,10 +359,10 @@
     <p class="section-sub light">Cuplikan momen kelas kami. Klik foto untuk memperbesar, atau lihat galeri lengkap di halaman khusus.</p>
     <div class="gallery-grid">
       <!-- Untuk menambah foto: copy paste blok div di bawah, ganti src="foto/NAMA-FILE.jpg" -->
-      <div class="photo-tile" style="background:linear-gradient(135deg,#e8a33d,#c0392b)"><img src="IMG-20260721-WA0027.jpg" alt="" onerror="this.style.display='none'"></div>
-      <div class="photo-tile" style="background:linear-gradient(135deg,#4a6fa5,#2c4a3a)"><img src="fg2.jpg" alt="" onerror="this.style.display='none'"></div>
-      <div class="photo-tile" style="background:linear-gradient(135deg,#f4c430,#e8a33d)"><img src="fg3.jpg" alt="" onerror="this.style.display='none'"></div>
-      <div class="photo-tile" style="background:linear-gradient(135deg,#f4c430,#e8a33d)"><img src="fg4.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div class="photo-tile" style="background:linear-gradient(135deg,#e8a33d,#c0392b)"><img src="IMG-20260721-WA0027.jpg" alt="Momen kelas 1" onerror="this.style.display='none'"></div>
+      <div class="photo-tile" style="background:linear-gradient(135deg,#4a6fa5,#2c4a3a)"><img src="fg2.jpg" alt="Momen kelas 2" onerror="this.style.display='none'"></div>
+      <div class="photo-tile" style="background:linear-gradient(135deg,#f4c430,#e8a33d)"><img src="fg3.jpg" alt="Momen kelas 3" onerror="this.style.display='none'"></div>
+      <div class="photo-tile" style="background:linear-gradient(135deg,#f4c430,#e8a33d)"><img src="fg4.jpg" alt="Momen kelas 4" onerror="this.style.display='none'"></div>
     </div>
     <div class="btn-row">
       <a href="galeri.html" class="btn btn-primary">Lihat Semua Foto →</a>
@@ -371,15 +376,15 @@
     <h2 class="section-title">Pengumuman</h2>
     <div class="sticky-grid">
       <div class="sticky-note note-yellow">
-        <p class="note-date">2026</p>
+        <p class="note-date">28 Jul 2026</p>
         <p></p>
       </div>
       <div class="sticky-note note-red">
-        <p class="note-date">2026</p>
+        <p class="note-date">25 Jul 2026</p>
         <p></p>
       </div>
       <div class="sticky-note note-green">
-        <p class="note-date">2026</p>
+        <p class="note-date">20 Jul 2026</p>
         <p></p>
       </div>
     </div>
@@ -446,5 +451,12 @@ document.addEventListener('keydown', (e) => {
 </script>
 
 <script src="tambahan.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js');
+  });
+}
+</script>
 </body>
-          </html>
+</html>
