@@ -10,6 +10,79 @@
 <link rel="stylesheet" href="styler.css">
 <link rel="stylesheet" href="tambahan.css">
 <link rel="icon" type="image/png" sizes="1103x1103" href="logosmk.png">
+<style>
+  .id-photo { cursor: pointer; transition: transform 0.15s ease; -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+  .id-photo:hover { transform: scale(1.05); }
+
+  .profil-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .profil-overlay.aktif { display: flex; }
+
+  .profil-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 320px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  }
+  .profil-close {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+    line-height: 1;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .profil-close:hover { color: #222; }
+
+  .profil-foto-besar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px auto 16px;
+    display: block;
+  }
+  .profil-inisial-besar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 10px auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    font-weight: 700;
+    color: #f7f7f2;
+  }
+  .profil-nama {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .profil-role {
+    font-size: 14px;
+    color: #888;
+    margin: 4px 0 0;
+  }
+</style>
 </head>
 <body>
 
@@ -237,32 +310,32 @@
     <h2 class="section-title">Pengurus Kelas</h2>
     <div class="id-card-grid">
       <div class="id-card">
-        <div class="id-photo" style="background:#c0392b"><img src="wildan1.jpg" alt="Wildansyah azzam arkana" onerror="this.style.display='none'; this.parentElement.innerHTML='RA';"></div>
+        <div class="id-photo" onclick="bukaProfil(this, 'Wildansyah azzam arkana', 'Ketua Kelas', '#c0392b')" style="background:#c0392b"><img src="wildan1.jpg" alt="Wildansyah azzam arkana" onerror="this.style.display='none'; this.parentElement.innerHTML='RA';"></div>
         <h3>Wildansyah azzam arkana</h3>
         <p class="role">Ketua Kelas</p>
       </div>
       <div class="id-card">
-        <div class="id-photo" style="background:#2c4a3a"><img src="fritty.jpg" alt="Frity humaira" onerror="this.style.display='none'; this.parentElement.innerHTML='SN';"></div>
+        <div class="id-photo" onclick="bukaProfil(this, 'Fritty humaira', 'Wakil Ketua', '#2c4a3a')" style="background:#2c4a3a"><img src="fritty.jpg" alt="Frity humaira" onerror="this.style.display='none'; this.parentElement.innerHTML='SN';"></div>
         <h3>Fritty humaira</h3>
         <p class="role">Wakil Ketua</p>
       </div>
       <div class="id-card">
-        <div class="id-photo" style="background:#f4c430;color:#1e3a2b"><img src="angel.jpg" alt="Angelina Putri" onerror="this.style.display='none'; this.parentElement.innerHTML='AP';"></div>
+        <div class="id-photo" onclick="bukaProfil(this, 'Angelina putri', 'Sekretaris 1', '#f4c430')" style="background:#f4c430;color:#1e3a2b"><img src="angel.jpg" alt="Angelina Putri" onerror="this.style.display='none'; this.parentElement.innerHTML='AP';"></div>
         <h3>Angelina putri</h3>
         <p class="role">Sekretaris 1</p>
       </div>
       <div class="id-card">
-        <div class="id-photo" style="background:#f4c430;color:#1e3a2b"><img src="salsa.jpg" alt="Salsa sri rahayu" onerror="this.style.display='none'; this.parentElement.innerHTML='SS';"></div>
+        <div class="id-photo" onclick="bukaProfil(this, 'Salsa sri rahayu', 'Sekretaris 2', '#f4c430')" style="background:#f4c430;color:#1e3a2b"><img src="salsa.jpg" alt="Salsa sri rahayu" onerror="this.style.display='none'; this.parentElement.innerHTML='SS';"></div>
         <h3>Salsa sri rahayu</h3>
         <p class="role">Sekretaris 2</p>
       </div>
       <div class="id-card">
-        <div class="id-photo" style="background:#4a6fa5"><img src="nur.jpg" alt="Nur avia rahma" onerror="this.style.display='none'; this.parentElement.innerHTML='NA';"></div>
+        <div class="id-photo" onclick="bukaProfil(this, 'Nur avia rahma', 'Bendahara 1', '#4a6fa5')" style="background:#4a6fa5"><img src="nur.jpg" alt="Nur avia rahma" onerror="this.style.display='none'; this.parentElement.innerHTML='NA';"></div>
         <h3>Nur avia rahma</h3>
         <p class="role">Bendahara 1</p> 
       </div>
         <div class="id-card">
-        <div class="id-photo" style="background:#f4c430;color:#1e3a2b"><img src="windi.jpg" alt="Windi alawiyah" onerror="this.style.display='none'; this.parentElement.innerHTML='WA';"></div>
+        <div class="id-photo" onclick="bukaProfil(this, 'Windi alawiyah', 'Bendahara 2', '#f4c430')" style="background:#f4c430;color:#1e3a2b"><img src="windi.jpg" alt="Windi alawiyah" onerror="this.style.display='none'; this.parentElement.innerHTML='WA';"></div>
         <h3>Windi alawiyah</h3>
         <p class="role">Bendahara 2</p>
       </div>
@@ -281,10 +354,10 @@
     <p class="section-sub light">Cuplikan momen kelas kami. Klik foto untuk memperbesar, atau lihat galeri lengkap di halaman khusus.</p>
     <div class="gallery-grid">
       <!-- Untuk menambah foto: copy paste blok div di bawah, ganti src="foto/NAMA-FILE.jpg" -->
-      <div class="photo-tile" style="background:linear-gradient(135deg,#e8a33d,#c0392b)"><img src="IMG-20260721-WA0027.jpg" alt="Momen kelas 1" onerror="this.style.display='none'"></div>
-      <div class="photo-tile" style="background:linear-gradient(135deg,#4a6fa5,#2c4a3a)"><img src="fg2.jpg" alt="Momen kelas 2" onerror="this.style.display='none'"></div>
-      <div class="photo-tile" style="background:linear-gradient(135deg,#f4c430,#e8a33d)"><img src="fg3.jpg" alt="Momen kelas 3" onerror="this.style.display='none'"></div>
-      <div class="photo-tile" style="background:linear-gradient(135deg,#f4c430,#e8a33d)"><img src="fg4.jpg" alt="Momen kelas 4" onerror="this.style.display='none'"></div>
+      <div class="photo-tile" style="background:linear-gradient(135deg,#e8a33d,#c0392b)"><img src="IMG-20260721-WA0027.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div class="photo-tile" style="background:linear-gradient(135deg,#4a6fa5,#2c4a3a)"><img src="fg2.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div class="photo-tile" style="background:linear-gradient(135deg,#f4c430,#e8a33d)"><img src="fg3.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div class="photo-tile" style="background:linear-gradient(135deg,#f4c430,#e8a33d)"><img src="fg4.jpg" alt="" onerror="this.style.display='none'"></div>
     </div>
     <div class="btn-row">
       <a href="galeri.html" class="btn btn-primary">Lihat Semua Foto →</a>
@@ -298,15 +371,15 @@
     <h2 class="section-title">Pengumuman</h2>
     <div class="sticky-grid">
       <div class="sticky-note note-yellow">
-        <p class="note-date">28 Jul 2026</p>
+        <p class="note-date">2026</p>
         <p></p>
       </div>
       <div class="sticky-note note-red">
-        <p class="note-date">25 Jul 2026</p>
+        <p class="note-date">2026</p>
         <p></p>
       </div>
       <div class="sticky-note note-green">
-        <p class="note-date">20 Jul 2026</p>
+        <p class="note-date">2026</p>
         <p></p>
       </div>
     </div>
@@ -331,6 +404,47 @@
   </div>
 </footer>
 
+<!-- MODAL PROFIL FOTO PENGURUS -->
+<div class="profil-overlay" id="profil-overlay" onclick="tutupProfil(event)">
+  <div class="profil-box" onclick="event.stopPropagation()">
+    <button class="profil-close" onclick="tutupProfil()">&times;</button>
+    <div id="profil-foto-wrap"></div>
+    <p class="profil-nama" id="profil-nama"></p>
+    <p class="profil-role" id="profil-role"></p>
+  </div>
+</div>
+
+<script>
+function bukaProfil(el, nama, role, warna) {
+  const overlay = document.getElementById('profil-overlay');
+  const fotoWrap = document.getElementById('profil-foto-wrap');
+  const namaEl = document.getElementById('profil-nama');
+  const roleEl = document.getElementById('profil-role');
+
+  const img = el.querySelector('img');
+  const fotoAda = img && img.style.display !== 'none';
+
+  if (fotoAda) {
+    fotoWrap.innerHTML = `<img src="${img.src}" alt="${nama}" class="profil-foto-besar">`;
+  } else {
+    const inisial = el.textContent.trim();
+    fotoWrap.innerHTML = `<div class="profil-inisial-besar" style="background:${warna}">${inisial}</div>`;
+  }
+
+  namaEl.textContent = nama;
+  roleEl.textContent = role || '';
+  overlay.classList.add('aktif');
+}
+
+function tutupProfil(e) {
+  document.getElementById('profil-overlay').classList.remove('aktif');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') tutupProfil();
+});
+</script>
+
 <script src="tambahan.js"></script>
 </body>
-</html>
+          </html>
