@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Tugas — Kelas X PPLG</title>
+<link rel="stylesheet" href="styler.css">
+<style>
+  .tugas-wrap { max-width: 700px; margin: 40px auto; padding: 0 20px; }
+  .tugas-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    border-left: 5px solid #2563eb;
+  }
+  .tugas-mapel { font-weight: 700; font-size: 16px; margin: 0 0 4px; }
+  .tugas-deskripsi { margin: 0 0 8px; color: #333; }
+  .tugas-deadline { font-size: 13px; color: #888; }
+  .tugas-deadline.mendesak { color: #dc2626; font-weight: 600; }
+  .kosong { text-align: center; color: #888; padding: 40px 0; }
+</style>
+</head>
+<body>
+
+<div class="tugas-wrap">
+  <h1>📋 Daftar Tugas</h1>
+  <div id="daftar-tugas">Memuat...</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script>
+const db = firebase.firestore();
+const daftarEl = document.getElementById('daftar-tugas');
+
+function parseTanggal(str) {
+  const [y, m, d] = str.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+function formatTanggal(str) {
+  return parseTanggal(str).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+db.collection('tugas').orderBy('deadline', 'asc').onSnapshot((snapshot) => {
+  const sekarang = new Date();
+  sekarang.setHours(0, 0, 0, 0);
+
+  const aktif = [];
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+    if (parseTanggal(data.deadline) >= sekarang) {
+      aktif.push(data);
+    }
+  });
+
+  if (aktif.length === 0) {
+    daftarEl.innerHTML = '<p class="kosong">Gak ada tugas yang deadline-nya masih berlaku. Aman! 🎉</p>';
+    return;
+  }
+
+  daftarEl.innerHTML = aktif.map(t => {
+    const selisihHari = Math.ceil((parseTanggal(t.deadline) - sekarang) / (1000 * 60 * 60 * 24));
+    const mendesak = selisihHari <= 1 ? 'mendesak' : '';
+    return `
+      <div class="tugas-card">
+        <p class="tugas-mapel">${t.mapel}</p>
+        <p class="tugas-deskripsi">${t.deskripsi}</p>
+        <p class="tugas-deadline ${mendesak}">📅 Deadline: ${formatTanggal(t.deadline)}</p>
+      </div>
+    `;
+  }).join('');
+});
+</script>
+
+</body>
+</html>
